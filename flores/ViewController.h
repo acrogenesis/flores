@@ -9,5 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentColor;
+- (IBAction)switchAction:(id)sender;
+@property (weak, nonatomic) IBOutlet UISwitch *switchOutlet;
+- (IBAction)buttonPicture:(id)sender;
+@property (weak, nonatomic) IBOutlet UIWebView *pictureWV;
+@property (weak, nonatomic) IBOutlet UIWebView *detailsWV;
 
 @end
