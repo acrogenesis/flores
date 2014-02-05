@@ -27,7 +27,20 @@
 }
 
 - (IBAction)switchAction:(id)sender {
+    self.detailsWV.hidden != [sender isOn];
 }
 - (IBAction)buttonPicture:(id)sender {
+    NSString *color = [self.segmentColor titleForSegmentAtIndex:self.segmentColor.selectedSegmentIndex];
+    NSString *url = [[NSString alloc] initWithFormat:@"http://www.floraphotographs.com/showrandomios.php?color=%@&session=%d",color,10];
+    NSURL *imageURL = [NSURL URLWithString:url];
+    NSURLRequest *imageRequest = [NSURLRequest requestWithURL:imageURL];
+    [self.pictureWV loadRequest:imageRequest];
+    
+    if ([self.switchOutlet isOn]) {
+        NSString *detail = [[NSString alloc] initWithFormat:@"http://www.floraphotographs.com/detailios.php?color=%@&session=%d",color,10];
+        NSURL *detailURL = [NSURL URLWithString:detail];
+        [self.detailsWV loadRequest:[NSURLRequest requestWithURL:detailURL]];
+    }
+    
 }
 @end
